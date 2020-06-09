@@ -1,6 +1,10 @@
 import { LitElement, html, css } from 'lit-element';
 import { openWcLogo } from './open-wc-logo.js';
 
+import { createStore } from 'redux'
+import todoApp from './reducers'
+
+import store from './store/configureStore';
 
 export class ReduxExample extends LitElement {
   static get properties() {
@@ -59,8 +63,8 @@ export class ReduxExample extends LitElement {
 
   }
 
-  initStore() {
-    console.log('init store');
+  addToDo() {
+    store.dispatch(addTodo("text 1"));
   }
 
   render() {
@@ -68,8 +72,8 @@ export class ReduxExample extends LitElement {
       <main>
 
         <h1>Using Redux example</h1>
-        <button @click=${this.initStore}>
-          Initialize Store
+        <button @click=${this.addToDo}>
+          Add ToDo
         </button>
       </main>
 
