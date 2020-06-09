@@ -76,12 +76,10 @@ export class ReduxExample extends LitElement {
 
   showCompleted() {
     store.dispatch(setVisibilityFilter(VisibilityFilters.SHOW_COMPLETED));
-    console.log(store.getState());
   }
 
   showActive() {
     store.dispatch(setVisibilityFilter(VisibilityFilters.SHOW_ACTIVE));
-    console.log(store.getState());
   }
 
   resetTodos() {
@@ -89,7 +87,7 @@ export class ReduxExample extends LitElement {
 
     store.dispatch(setInitialTodos([{text: "first", completed: false}]));
 
-    console.log(store.getState());
+//    console.log(store.getState());
     // Every time the state changes, log it
     // Note that subscribe() returns a function for unregistering the listener
 
