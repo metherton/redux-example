@@ -5,6 +5,12 @@ import { createStore } from 'redux'
 import todoApp from './reducers'
 
 import store from './store/configureStore';
+import {
+  addTodo,
+  toggleTodo,
+  setVisibilityFilter,
+  VisibilityFilters
+} from './actions'
 
 export class ReduxExample extends LitElement {
   static get properties() {
@@ -67,14 +73,26 @@ export class ReduxExample extends LitElement {
     store.dispatch(addTodo("text 1"));
   }
 
+  showInitialState() {
+    console.log(store.getState());
+    // Every time the state changes, log it
+    // Note that subscribe() returns a function for unregistering the listener
+    store.subscribe(() => console.log(store.getState()));
+  }
+
   render() {
     return html`
       <main>
 
         <h1>Using Redux example</h1>
+        <button @click=${this.showInitialState}>
+          Show Initial State
+        </button>
+
         <button @click=${this.addToDo}>
           Add ToDo
         </button>
+
       </main>
 
 
