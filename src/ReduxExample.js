@@ -18,6 +18,8 @@ export class ReduxExample extends LitElement {
     return {
       title: { type: String },
       page: { type: String },
+      todos: { type: Array },
+      visibilityFilter: {type: String},
     };
   }
 
@@ -67,7 +69,8 @@ export class ReduxExample extends LitElement {
 
   constructor() {
     super();
-
+    this.todos = [];
+    this.visibilityFilter = "";
   }
 
   addToDo() {
@@ -83,9 +86,13 @@ export class ReduxExample extends LitElement {
   }
 
   resetTodos() {
-    store.subscribe(() => console.log(store.getState()));
+    store.subscribe(() => {
+      this.todos = store.getState().todos;
+      this.visibilityFilter = store.getState().visibilityFilter;
+    });
 
     store.dispatch(setInitialTodos([{text: "first", completed: false}]));
+
 
 //    console.log(store.getState());
     // Every time the state changes, log it
@@ -114,7 +121,15 @@ export class ReduxExample extends LitElement {
           Show Active
         </button>
 
+          <h3>Todos</h3><span>&nbsp;Visibility: ${store.getState().visibilityFilter}
+          <ul>
+            ${this.todos.map(todo => html`
+              <li>${todo.text}: ${todo.completed}</li>
+            `)}
+          </ul>
+
       </main>
+
 
 
     `;
