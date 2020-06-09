@@ -1,6 +1,7 @@
 import { LitElement, html, css } from 'lit-element';
 import { openWcLogo } from './open-wc-logo.js';
 
+
 export class ReduxExample extends LitElement {
   static get properties() {
     return {
@@ -53,12 +54,23 @@ export class ReduxExample extends LitElement {
     `;
   }
 
+  constructor() {
+    super();
+
+  }
+
+  initStore() {
+    console.log('init store');
+  }
+
   render() {
     return html`
       <main>
 
         <h1>Using Redux example</h1>
-
+        <button @click=${this.initStore}>
+          Initialize Store
+        </button>
       </main>
 
 
