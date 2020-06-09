@@ -74,6 +74,16 @@ export class ReduxExample extends LitElement {
     store.dispatch(addTodo("text 1"));
   }
 
+  showCompleted() {
+    store.dispatch(setVisibilityFilter(VisibilityFilters.SHOW_COMPLETED));
+    console.log(store.getState());
+  }
+
+  showActive() {
+    store.dispatch(setVisibilityFilter(VisibilityFilters.SHOW_ACTIVE));
+    console.log(store.getState());
+  }
+
   resetTodos() {
     store.subscribe(() => console.log(store.getState()));
 
@@ -96,6 +106,14 @@ export class ReduxExample extends LitElement {
 
         <button @click=${this.addToDo}>
           Add ToDo
+        </button>
+
+        <button @click=${this.showCompleted}>
+          Show Completed
+        </button>
+
+        <button @click=${this.showActive}>
+          Show Active
         </button>
 
       </main>

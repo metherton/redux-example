@@ -28,7 +28,7 @@ function todos(state = [], action) {
         }
       ]
     case SET_INITIAL_TODOS:
-      return action.todos
+      return Object.assign([], action.todos)
 
     case TOGGLE_TODO:
       return state.map((todo, index) => {
