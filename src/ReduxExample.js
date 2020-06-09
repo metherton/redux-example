@@ -7,6 +7,7 @@ import todoApp from './reducers'
 import store from './store/configureStore';
 import {
   addTodo,
+  setInitialTodos,
   toggleTodo,
   setVisibilityFilter,
   VisibilityFilters
@@ -73,11 +74,15 @@ export class ReduxExample extends LitElement {
     store.dispatch(addTodo("text 1"));
   }
 
-  showInitialState() {
+  resetTodos() {
+    store.subscribe(() => console.log(store.getState()));
+
+    store.dispatch(setInitialTodos([{text: "first", completed: false}]));
+
     console.log(store.getState());
     // Every time the state changes, log it
     // Note that subscribe() returns a function for unregistering the listener
-    store.subscribe(() => console.log(store.getState()));
+
   }
 
   render() {
@@ -85,8 +90,8 @@ export class ReduxExample extends LitElement {
       <main>
 
         <h1>Using Redux example</h1>
-        <button @click=${this.showInitialState}>
-          Show Initial State
+        <button @click=${this.resetTodos}>
+          Reset Initial Todos
         </button>
 
         <button @click=${this.addToDo}>

@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux'
 import {
   ADD_TODO,
+  SET_INITIAL_TODOS,
   TOGGLE_TODO,
   SET_VISIBILITY_FILTER,
   VisibilityFilters
@@ -26,6 +27,9 @@ function todos(state = [], action) {
           completed: false
         }
       ]
+    case SET_INITIAL_TODOS:
+      return action.todos
+
     case TOGGLE_TODO:
       return state.map((todo, index) => {
         if (index === action.index) {
