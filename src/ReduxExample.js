@@ -56,29 +56,12 @@ export class ReduxExample extends LitElement {
   render() {
     return html`
       <main>
-        <div class="logo">${openWcLogo}</div>
-        <h1>My app</h1>
 
-        <p>Edit <code>src/ReduxExample.js</code> and save to reload.</p>
-        <a
-          class="app-link"
-          href="https://open-wc.org/developing/#code-examples"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Code examples
-        </a>
+        <h1>Using Redux example</h1>
+
       </main>
 
-      <p class="app-footer">
-        🚽 Made with love by
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://github.com/open-wc"
-          >open-wc</a
-        >.
-      </p>
+
     `;
   }
 }
